@@ -18,15 +18,14 @@ public class ProductService {
 
      public boolean registerProduct(ProductDto productDto) {
 
-         System.out.println("dahsl");
+         System.out.println(productDto);
 
          Product product = new Product();
-         product.setidChassi(productDto.getidChassi());
          product.setName(productDto.getName());
          product.setPrice(productDto.getPrice());
+         product.setQuantidade(product.getQuantidade());
 
-
-         productRepository.save(product);
+        productRepository.save(product);
 
           return true;
      }

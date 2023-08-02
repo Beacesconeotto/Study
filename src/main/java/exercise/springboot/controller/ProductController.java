@@ -1,10 +1,13 @@
 package exercise.springboot.controller;
 
 import exercise.springboot.Service.ProductService;
+import exercise.springboot.dto.ProductDto;
 import exercise.springboot.entity.Product;
 import exercise.springboot.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,19 +30,21 @@ public class ProductController {
 
 
     @PostMapping
-    public Product createProduto(@RequestBody Product product) {
-        produtos.add(product);
-        return product;
+    public ResponseEntity<String> createProduct(@Valid @RequestBody ProductDto product) {
+       productService.registerProduct(product);
+        System.out.println(product);
+        return ResponseEntity.ok("Car registered successfully!");
     }
 
     @GetMapping("/get/{idChassi}")
     public Product getProductByChassi(@PathVariable Long idChassi) {
+        System.out.println(idChassi);
         Product productDto = productService.getProductByChassi(idChassi);
 
         return productDto;
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     public Product updateProduct(@PathVariable long idChassi, @RequestBody Product product){
         Product updateProduct = productRepository.findByIdChassi(idChassi);
 

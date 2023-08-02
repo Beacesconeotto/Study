@@ -1,4 +1,4 @@
-package entity;
+package exercise.springboot.entity;
 
 
 import javax.persistence.*;
@@ -10,27 +10,38 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long idChassi;
 
     @NotBlank
     private String name;
 
-    @NotBlank
+
     private double price;
+
+    private int quantidade;
 
 
     public Product() {
-        this.id = id;
+        this.idChassi = idChassi;
         this.name = name;
         this.price = price;
+        this.quantidade = quantidade;
     }
 
-      public int getId() {
-        return id;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Long getidChassi() {
+        return idChassi;
+    }
+
+    public void setidChassi (Long idChassi) {
+        this.idChassi = idChassi;
     }
 
     public String getName() {
@@ -52,7 +63,7 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
+                "idChassi=" + idChassi +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 '}';

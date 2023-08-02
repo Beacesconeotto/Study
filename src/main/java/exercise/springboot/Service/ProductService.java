@@ -1,9 +1,9 @@
-package Service;
+package exercise.springboot.Service;
 
-import dto.ProductDto;
-import entity.Product;
+import exercise.springboot.dto.ProductDto;
+import exercise.springboot.entity.Product;
 import org.springframework.stereotype.Service;
-import repository.ProductRepository;
+import exercise.springboot.repository.ProductRepository;
 
 @Service
 public class ProductService {
@@ -14,14 +14,14 @@ public class ProductService {
     public ProductService(ProductRepository productRepository) {
 
         this.productRepository = productRepository;
-     }
+    }
 
      public boolean registerProduct(ProductDto productDto) {
 
          System.out.println("dahsl");
 
          Product product = new Product();
-         product.setId(productDto.getId());
+         product.setidChassi(productDto.getidChassi());
          product.setName(productDto.getName());
          product.setPrice(productDto.getPrice());
 
@@ -30,4 +30,8 @@ public class ProductService {
 
           return true;
      }
+     public Product getProductByChassi (Long idChassi) {
+        return productRepository.findByIdChassi(idChassi);
+     }
+
 }

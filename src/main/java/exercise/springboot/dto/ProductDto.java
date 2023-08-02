@@ -1,19 +1,21 @@
-package dto;
+package exercise.springboot.dto;
 
 
 import javax.validation.constraints.NotBlank;
 
 public class ProductDto {
-    private int id;
+    private Long idChassi;
 
     @NotBlank
     private String name;
 
-    @NotBlank
+
     private double price;
 
+    private int quantidade;
 
-    public ProductDto(int id, String name, double price ) {
+
+    public ProductDto(int idChassi, String name, double price, int quantidade ) {
 
     }
 
@@ -21,13 +23,20 @@ public class ProductDto {
 
     }
 
-
-    public int getId() {
-        return id;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Long getidChassi() {
+        return idChassi;
+    }
+
+    public void setidChassi(Long idChassi) {
+        this.idChassi = idChassi;
     }
 
     public String getName() {
